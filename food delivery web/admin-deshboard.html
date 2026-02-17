@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Admin Dashboard | CraveFast Premium</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Corrected Lucide Link -->
+    <script src="https://unpkg.com"></script>
+    <style>
+        body {
+            background: radial-gradient(circle at top left, #1e1b4b, #0f172a);
+            min-height: 100vh;
+            color: white;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+        }
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        }
+        .sidebar-link:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 4px solid #f97316;
+            color: #f97316;
+        }
+        .upload-area {
+            background: repeating-linear-gradient(45deg, rgba(255,255,255,0.02), rgba(255,255,255,0.02) 10px, transparent 10px, transparent 20px);
+        }
+        /* Hide scrollbar for clean UI */
+        ::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="flex flex-col lg:flex-row">
+
+    <!-- Mobile Header (Only visible on mobile) -->
+    <div class="lg:hidden glass p-4 flex justify-between items-center sticky top-0 z-50">
+        <h1 class="text-xl font-black text-orange-500">CRAVE<span class="text-white">ADMIN</span></h1>
+        <button onclick="toggleSidebar()" class="p-2 glass rounded-xl"><i data-lucide="menu"></i></button>
+    </div>
+
+    <!-- Sidebar Navigation -->
+    <aside id="sidebar" class="fixed inset-y-0 left-0 transform -translate-x-full lg:translate-x-0 lg:static w-72 h-screen glass z-40 transition-transform duration-300 flex flex-col p-6 overflow-y-auto">
+        <div class="mb-12 px-4 hidden lg:block">
+            <h1 class="text-2xl font-black text-orange-500 tracking-tighter">CRAVE<span class="text-white">ADMIN</span></h1>
+        </div>
+        
+        <nav class="space-y-2 flex-1">
+            <a href="index.html" class="sidebar-link flex items-center gap-4 p-4 rounded-2xl transition-all">
+                <i data-lucide="home"></i> <span>Main Site</span>
+            </a>
+            <a href="#" class="sidebar-link flex items-center gap-4 p-4 rounded-2xl bg-white/5 border-l-4 border-orange-500 text-orange-500">
+                <i data-lucide="layout-dashboard"></i> <span class="font-semibold">Overview</span>
+            </a>
+            <a href="#" class="sidebar-link flex items-center gap-4 p-4 rounded-2xl transition-all">
+                <i data-lucide="utensils-crossbones"></i> <span>Manage Menu</span>
+            </a>
+            <a href="#" class="sidebar-link flex items-center gap-4 p-4 rounded-2xl transition-all">
+                <i data-lucide="shopping-cart"></i> <span>Orders</span>
+            </a>
+            <a href="#" class="sidebar-link flex items-center gap-4 p-4 rounded-2xl transition-all">
+                <i data-lucide="bar-chart-3"></i> <span>Analytics</span>
+            </a>
+        </nav>
+
+        <div class="glass p-4 rounded-2xl mt-auto">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center font-bold shadow-lg shadow-orange-500/30">RB</div>
+                <div>
+                    <p class="text-xs font-bold uppercase tracking-widest">Royal Bistro</p>
+                    <p class="text-[10px] text-gray-500 uppercase">Super Admin</p>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 p-6 md:p-12 overflow-y-auto w-full">
+        <header class="flex flex-col md:flex-row justify-between items-center mb-10 gap-6">
+            <div>
+                <h2 class="text-3xl font-black italic tracking-tight">Welcome Back, Chef!</h2>
+                <p class="text-gray-400 text-sm">Real-time status of your premium food empire.</p>
+            </div>
+            <div class="flex gap-4">
+                <button class="glass p-4 rounded-2xl hover:bg-white/10 transition-all"><i data-lucide="search" size="20"></i></button>
+                <button class="glass p-4 rounded-2xl relative hover:bg-white/10 transition-all">
+                    <i data-lucide="bell" size="20"></i>
+                    <span class="absolute top-3 right-3 w-2.5 h-2.5 bg-red-500 rounded-full border-2 border-[#0f172a]"></span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Stats Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mb-12">
+            <div class="glass p-8 rounded-[35px] border-b-4 border-green-500/50">
+                <p class="text-gray-400 text-[10px] uppercase tracking-widest font-black">Revenue</p>
+                <h3 class="text-3xl font-black mt-2 italic text-white">$42,850</h3>
+                <p class="text-green-400 text-[10px] mt-3 font-bold">+12.5% Today</p>
+            </div>
+            <div class="glass p-8 rounded-[35px] border-b-4 border-orange-500/50">
+                <p class="text-gray-400 text-[10px] uppercase tracking-widest font-black">Orders</p>
+                <h3 class="text-3xl font-black mt-2 italic text-white">1,204</h3>
+                <p class="text-orange-400 text-[10px] mt-3 font-bold">45 In-transit</p>
+            </div>
+            <div class="glass p-8 rounded-[35px] border-b-4 border-blue-500/50">
+                <p class="text-gray-400 text-[10px] uppercase tracking-widest font-black">Customers</p>
+                <h3 class="text-3xl font-black mt-2 italic text-white">892</h3>
+                <p class="text-blue-400 text-[10px] mt-3 font-bold">85% Repeat Rate</p>
+            </div>
+            <div class="glass p-8 rounded-[35px] border-b-4 border-yellow-500/50">
+                <p class="text-gray-400 text-[10px] uppercase tracking-widest font-black">Avg Prep</p>
+                <h3 class="text-3xl font-black mt-2 italic text-white">14 min</h3>
+                <p class="text-yellow-400 text-[10px] mt-3 font-bold">Chef's Performance</p>
+            </div>
+        </div>
+
+        <!-- Dashboard Content Area -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+            
+            <!-- Dish Upload -->
+            <div class="glass p-10 rounded-[45px] border border-white/5 shadow-2xl">
+                <h3 class="text-xl font-black mb-8 flex items-center gap-3 italic uppercase tracking-tighter">
+                    <i data-lucide="plus-circle" class="text-orange-500"></i> Add New Creation
+                </h3>
+                <div class="space-y-6">
+                    <div onclick="alert('Open Gallery')" class="upload-area border-2 border-dashed border-white/10 rounded-[35px] p-16 text-center group hover:border-orange-500/50 cursor-pointer transition-all">
+                        <i data-lucide="image-plus" class="mx-auto mb-4 text-gray-500 group-hover:text-orange-500 transition-colors" size="48"></i>
+                        <p class="text-[10px] font-black uppercase tracking-[2px] text-gray-400">Upload Premium Asset</p>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <input type="text" placeholder="Gourmet Dish Name" class="glass bg-transparent p-4 rounded-2xl outline-none focus:border-orange-500 transition-all text-sm col-span-2 border border-white/5">
+                        <input type="text" placeholder="Category" class="glass bg-transparent p-4 rounded-2xl outline-none focus:border-orange-500 text-sm border border-white/5">
+                        <input type="number" placeholder="Price ($)" class="glass bg-transparent p-4 rounded-2xl outline-none focus:border-orange-500 text-sm border border-white/5">
+                    </div>
+                    <textarea placeholder="Tell the story of this dish..." class="glass bg-transparent w-full p-4 rounded-2xl outline-none h-32 focus:border-orange-500 text-sm border border-white/5"></textarea>
+                    <button onclick="alert('Dish Published Successfully!')" class="w-full bg-gradient-to-r from-orange-500 to-red-600 py-5 rounded-[24px] font-black tracking-[3px] uppercase text-[10px] shadow-xl shadow-orange-500/20 active:scale-95 transition-all">
+                        Launch to Menu
+                    </button>
+                </div>
+            </div>
+
+            <!-- Performance Section -->
+            <div class="glass p-10 rounded-[45px]">
+                <h3 class="text-xl font-black mb-8 italic uppercase tracking-tighter flex items-center justify-between">
+                    Top Sellers <i data-lucide="trending-up" class="text-green-500"></i>
+                </h3>
+                <div class="space-y-8">
+                    <div class="flex items-center justify-between p-4 glass bg-white/5 rounded-3xl border border-white/5">
+                        <div class="flex items-center gap-4">
+                            <div class="w-14 h-14 rounded-2xl bg-orange-500/20 flex items-center justify-center text-orange-500"><i data-lucide="pizza"></i></div>
+                            <div>
+                                <h4 class="font-bold text-sm">Margherita Pizza</h4>
+                                <p class="text-[10px] text-gray-500 uppercase font-black">412 Sales</p>
+                            </div>
+                        </div>
+                        <span class="text-orange-500 font-black italic">$1,240</span>
+                    </div>
+                    <div class="flex items-center justify-between p-4 glass bg-white/5 rounded-3xl border border-white/5">
+                        <div class="flex items-center gap-4">
+                            <div class="w-14 h-14 rounded-2xl bg-blue-500/20 flex items-center justify-center text-blue-500"><i data-lucide="soup"></i></div>
+                            <div>
+                                <h4 class="font-bold text-sm">Truffle Pasta</h4>
+                                <p class="text-[10px] text-gray-500 uppercase font-black">285 Sales</p>
+                            </div>
+                        </div>
+                        <span class="text-orange-500 font-black italic">$980</span>
+                    </div>
+                    <!-- Pro Add-on Card -->
+                    <div class="mt-10 bg-orange-600 p-8 rounded-[35px] text-white shadow-2xl shadow-orange-600/30">
+                        <h3 class="text-lg font-black italic uppercase tracking-widest">Go Professional</h3>
+                        <p class="text-xs opacity-90 mt-2 font-medium">Get advanced heatmap analytics & rider GPS tracking.</p>
+                        <button class="bg-white text-orange-600 px-8 py-3 rounded-2xl text-[10px] font-black uppercase tracking-widest mt-6 hover:bg-orange-50 transition-all">Upgrade Plan</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        lucide.createIcons();
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('-translate-x-full');
+        }
+    </script>
+</body>
+</html>

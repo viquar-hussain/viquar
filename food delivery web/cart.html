@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout | CraveFast Premium</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Corrected Lucide Link -->
+    <script src="https://unpkg.com"></script>
+    <style>
+        body {
+            background: linear-gradient(135deg, #1a1c2c 0%, #4a192c 100%);
+            min-height: 100vh;
+            color: white;
+            font-family: 'Inter', sans-serif;
+        }
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        input::placeholder { color: rgba(255,255,255,0.4); }
+        .payment-opt:hover { background: rgba(255, 255, 255, 0.1); border-color: #f97316; }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+
+    <div class="max-w-5xl mx-auto mt-6 mb-20">
+        <a href="menu.html" class="text-orange-500 flex items-center gap-2 mb-8 font-medium hover:underline">
+            <i data-lucide="arrow-left" size="18"></i> Continue Shopping
+        </a>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Order Summary -->
+            <div class="lg:col-span-2 space-y-6">
+                <h2 class="text-3xl font-bold mb-6">Your Basket</h2>
+                
+                <!-- Cart Item 1 -->
+                <div class="glass p-6 rounded-[28px] flex items-center justify-between">
+                    <div class="flex items-center gap-6">
+                        <img src="https://images.unsplash.com" class="w-20 h-20 rounded-2xl object-cover" alt="Food">
+                        <div>
+                            <h3 class="font-bold text-lg">Signature Margherita</h3>
+                            <p class="text-gray-400 text-sm">Extra Cheese • Medium</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div class="flex items-center gap-3 glass px-3 py-1 rounded-xl">
+                            <button class="text-orange-500 font-bold hover:scale-110">-</button>
+                            <span>1</span>
+                            <button class="text-orange-500 font-bold hover:scale-110">+</button>
+                        </div>
+                        <span class="font-bold text-xl">$12.99</span>
+                    </div>
+                </div>
+
+                <!-- Payment Methods (Added for Premium Look) -->
+                <div class="glass p-8 rounded-[32px]">
+                    <h3 class="text-xl font-bold mb-6 flex items-center gap-2">
+                        <i data-lucide="credit-card" class="text-orange-500"></i> Payment Method
+                    </h3>
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                        <div class="payment-opt glass p-4 rounded-2xl border border-white/10 cursor-pointer flex flex-col items-center gap-2 transition-all">
+                            <i data-lucide="wallet"></i><span class="text-xs">UPI</span>
+                        </div>
+                        <div class="payment-opt glass p-4 rounded-2xl border border-orange-500 bg-white/5 cursor-pointer flex flex-col items-center gap-2 transition-all">
+                            <i data-lucide="credit-card" class="text-orange-500"></i><span class="text-xs">Card</span>
+                        </div>
+                        <div class="payment-opt glass p-4 rounded-2xl border border-white/10 cursor-pointer flex flex-col items-center gap-2 transition-all">
+                            <i data-lucide="banknote"></i><span class="text-xs">Cash</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Shipping Address Form -->
+                <div class="glass p-8 rounded-[32px]">
+                    <h3 class="text-xl font-bold mb-6 flex items-center gap-2">
+                        <i data-lucide="map-pin" class="text-orange-500"></i> Delivery Address
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <input type="text" placeholder="Street Name" class="glass bg-transparent p-4 rounded-2xl outline-none focus:border-orange-500 border border-white/10">
+                        <input type="text" placeholder="Apartment / Suite" class="glass bg-transparent p-4 rounded-2xl outline-none focus:border-orange-500 border border-white/10">
+                        <input type="text" placeholder="City" class="glass bg-transparent p-4 rounded-2xl outline-none focus:border-orange-500 border border-white/10 md:col-span-2">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Payment Details Sidebar -->
+            <aside class="lg:col-span-1">
+                <div class="glass p-8 rounded-[32px] sticky top-8 border-t border-white/20">
+                    <h3 class="text-xl font-bold mb-6 italic">Order Summary</h3>
+                    
+                    <div class="space-y-4 mb-8 text-gray-300 text-sm">
+                        <div class="flex justify-between">
+                            <span>Subtotal</span>
+                            <span class="text-white font-medium">$12.99</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Delivery Fee</span>
+                            <span class="text-white font-medium">$2.50</span>
+                        </div>
+                        <div class="flex justify-between border-b border-white/5 pb-4">
+                            <span>Platform Tax</span>
+                            <span class="text-white font-medium">$1.20</span>
+                        </div>
+                        <div class="pt-2 flex justify-between">
+                            <span class="text-xl font-bold text-white">Total Amount</span>
+                            <span class="text-xl font-bold text-orange-500">$16.69</span>
+                        </div>
+                    </div>
+
+                    <button onclick="window.location.href='track.html'" class="w-full bg-gradient-to-r from-orange-500 to-red-600 py-4 rounded-2xl font-black uppercase tracking-widest text-sm hover:shadow-lg hover:shadow-orange-500/30 transition-all active:scale-95">
+                        Pay & Place Order
+                    </button>
+                    
+                    <div class="mt-6 flex justify-center gap-4 text-gray-500">
+                        <i data-lucide="shield-check" size="16"></i>
+                        <span class="text-[10px] uppercase tracking-wider">Secure Checkout</span>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <script>lucide.createIcons();</script>
+</body>
+</html>

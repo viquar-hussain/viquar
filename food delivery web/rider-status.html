@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rider Dashboard | CraveFast Premium</title>
+    <!-- Tailwind for Styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Corrected Lucide Icons Link -->
+    <script src="https://unpkg.com"></script>
+    <style>
+        body { background: #0f172a; color: white; font-family: 'Inter', sans-serif; }
+        .glass { 
+            background: rgba(255, 255, 255, 0.03); 
+            backdrop-filter: blur(10px); 
+            border: 1px solid rgba(255, 255, 255, 0.05); 
+        }
+        .status-pulse {
+            animation: pulse-green 2s infinite;
+        }
+        @keyframes pulse-green {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+        }
+    </style>
+</head>
+<body class="p-4 flex items-center justify-center min-h-screen">
+    
+    <div class="max-w-md w-full space-y-6">
+        <!-- Header -->
+        <div class="flex justify-between items-center px-2">
+            <div class="flex items-center gap-3">
+                <img src="https://images.unsplash.com" class="w-12 h-12 rounded-full border-2 border-green-500 object-cover shadow-lg shadow-green-500/20">
+                <div>
+                    <h4 class="font-bold text-sm tracking-tight">Rahul Sharma</h4>
+                    <p class="text-[10px] text-green-400 flex items-center gap-1 font-black uppercase tracking-widest">
+                        <span class="w-2 h-2 bg-green-500 rounded-full status-pulse"></span> Online
+                    </p>
+                </div>
+            </div>
+            <a href="index.html" class="glass p-3 rounded-full text-gray-400 hover:text-white transition-all">
+                <i data-lucide="home" size="20"></i>
+            </a>
+        </div>
+
+        <!-- Main Task Card -->
+        <div id="orderCard" class="glass p-8 rounded-[40px] border-l-4 border-l-orange-500 transition-all duration-500 shadow-2xl relative overflow-hidden">
+            <div class="flex justify-between mb-8">
+                <span id="statusBadge" class="bg-orange-500/10 text-orange-500 text-[10px] px-4 py-1.5 rounded-full font-black uppercase tracking-[1.5px] border border-orange-500/20">New Task</span>
+                <span class="text-[10px] text-gray-500 font-bold uppercase tracking-widest italic">Pay: $4.50</span>
+            </div>
+            
+            <div class="space-y-10 relative">
+                <!-- Visual Route Line -->
+                <div class="absolute left-[7px] top-2 bottom-2 w-[1px] bg-white/10 border-l border-dashed border-white/20"></div>
+                
+                <div class="flex gap-5 relative z-10">
+                    <div class="w-4 h-4 bg-gray-600 rounded-full border-4 border-[#0f172a] mt-1 shadow-sm"></div>
+                    <div>
+                        <p class="text-[9px] text-gray-500 uppercase font-black tracking-[2px] mb-1">Pick up from</p>
+                        <h5 class="text-sm font-bold text-white">The Royal Bistro, Sector 5</h5>
+                    </div>
+                </div>
+                
+                <div class="flex gap-5 relative z-10">
+                    <div class="w-4 h-4 bg-orange-500 rounded-full border-4 border-[#0f172a] mt-1 shadow-sm shadow-orange-500/50"></div>
+                    <div>
+                        <p class="text-[9px] text-gray-500 uppercase font-black tracking-[2px] mb-1">Drop off to</p>
+                        <h5 class="text-sm font-bold text-white">Skyline Apartments, Flat 402</h5>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Button -->
+            <button id="mainActionBtn" class="w-full mt-12 bg-orange-500 py-5 rounded-[24px] font-black tracking-[3px] uppercase text-[10px] shadow-xl shadow-orange-500/20 active:scale-95 transition-all text-white">
+                Accept Delivery
+            </button>
+        </div>
+        
+        <!-- Summary Stats -->
+        <div class="glass p-6 rounded-[35px] grid grid-cols-2 gap-4 border border-white/5">
+            <div class="text-center p-5 bg-white/5 rounded-3xl border border-white/5">
+                <p class="text-2xl font-black italic tracking-tighter">14</p>
+                <p class="text-[9px] text-gray-500 uppercase font-bold tracking-widest mt-1">Deliveries</p>
+            </div>
+            <div class="text-center p-5 bg-white/5 rounded-3xl border border-white/5">
+                <p class="text-2xl font-black text-green-400 italic tracking-tighter">$62.50</p>
+                <p class="text-[9px] text-gray-500 uppercase font-bold tracking-widest mt-1">Earnings</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Functionality -->
+    <script>
+        lucide.createIcons();
+
+        const actionBtn = document.getElementById('mainActionBtn');
+        const orderCard = document.getElementById('orderCard');
+        const statusBadge = document.getElementById('statusBadge');
+
+        actionBtn.addEventListener('click', function() {
+            if(this.innerText === "ACCEPT DELIVERY") {
+                this.innerText = "Confirm Pickup 🛵";
+                this.style.background = "#16a34a"; // Green
+                this.classList.remove('shadow-orange-500/20');
+                this.classList.add('shadow-green-500/30');
+                
+                statusBadge.innerText = "In Progress";
+                statusBadge.classList.remove('text-orange-500', 'bg-orange-500/10', 'border-orange-500/20');
+                statusBadge.classList.add('text-green-500', 'bg-green-500/10', 'border-green-500/20');
+                
+                orderCard.style.borderLeftColor = "#16a34a";
+                alert("Order Accepted! Heading to Restaurant.");
+            } else if(this.innerText === "CONFIRM PICKUP 🛵") {
+                alert("Order Picked Up! Customer is waiting.");
+                this.innerText = "Order Delivered ✅";
+                this.style.background = "#3b82f6"; // Blue for dropoff
+            } else {
+                this.innerText = "Completed ✅";
+                this.disabled = true;
+                this.style.opacity = "0.5";
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nearby Restaurants | CraveFast</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Corrected Lucide Link -->
+    <script src="https://unpkg.com"></script>
+    <style>
+        body {
+            background: linear-gradient(135deg, #1a1c2c 0%, #4a192c 100%);
+            min-height: 100vh;
+            color: white;
+            font-family: 'Inter', sans-serif;
+        }
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .res-card:hover .res-img {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+
+    <!-- Header Section -->
+    <header class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center mb-12 gap-6 mt-4">
+        <div>
+            <a href="index.html" class="text-orange-500 flex items-center gap-2 mb-2 font-medium">
+                <i data-lucide="arrow-left" size="18"></i> Back to Home
+            </a>
+            <h1 class="text-4xl font-bold">Top Restaurants Near You</h1>
+        </div>
+        <div class="flex gap-4">
+            <button class="glass px-6 py-2 rounded-full flex items-center gap-2 hover:bg-white/10 transition-all">
+                <i data-lucide="sliders-horizontal" size="18"></i> Filter
+            </button>
+            <button class="glass px-6 py-2 rounded-full flex items-center gap-2 hover:bg-white/10 transition-all">
+                <i data-lucide="map-pin" size="18"></i> Delhi, India
+            </button>
+        </div>
+    </header>
+
+    <!-- Restaurants Grid -->
+    <main class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <!-- Restaurant Card 1 -->
+        <div onclick="window.location.href='menu.html'" class="res-card glass rounded-[32px] overflow-hidden cursor-pointer group">
+            <div class="h-48 overflow-hidden relative">
+                <img src="https://images.unsplash.com" class="res-img w-full h-full object-cover transition-transform duration-500" alt="Restaurant">
+                <div class="absolute top-4 right-4 glass px-3 py-1 rounded-full text-sm font-bold text-orange-400">4.5 ⭐</div>
+            </div>
+            <div class="p-6">
+                <h3 class="text-xl font-bold mb-1">The Royal Bistro</h3>
+                <p class="text-gray-400 text-sm mb-4">Italian • Pasta • $20 for two</p>
+                <div class="flex justify-between items-center pt-4 border-t border-white/10">
+                    <span class="flex items-center gap-1 text-sm text-gray-300"><i data-lucide="clock" size="16"></i> 25-30 min</span>
+                    <a href="menu.html" class="bg-orange-500 hover:bg-orange-600 px-4 py-2 rounded-xl text-sm font-bold transition-colors">View Menu</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Restaurant Card 2 -->
+        <div onclick="window.location.href='menu.html'" class="res-card glass rounded-[32px] overflow-hidden cursor-pointer group">
+            <div class="h-48 overflow-hidden relative">
+                <img src="https://images.unsplash.com" class="res-img w-full h-full object-cover transition-transform duration-500" alt="Restaurant">
+                <div class="absolute top-4 right-4 glass px-3 py-1 rounded-full text-sm font-bold text-orange-400">4.8 ⭐</div>
+            </div>
+            <div class="p-6">
+                <h3 class="text-xl font-bold mb-1">Sushi Zen Garden</h3>
+                <p class="text-gray-400 text-sm mb-4">Japanese • Seafood • $45 for two</p>
+                <div class="flex justify-between items-center pt-4 border-t border-white/10">
+                    <span class="flex items-center gap-1 text-sm text-gray-300"><i data-lucide="clock" size="16"></i> 40-45 min</span>
+                    <a href="menu.html" class="bg-orange-500 hover:bg-orange-600 px-4 py-2 rounded-xl text-sm font-bold transition-colors">View Menu</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Restaurant Card 3 -->
+        <div onclick="window.location.href='menu.html'" class="res-card glass rounded-[32px] overflow-hidden cursor-pointer group">
+            <div class="h-48 overflow-hidden relative">
+                <img src="https://images.unsplash.com" class="res-img w-full h-full object-cover transition-transform duration-500" alt="Restaurant">
+                <div class="absolute top-4 right-4 glass px-3 py-1 rounded-full text-sm font-bold text-orange-400">4.2 ⭐</div>
+            </div>
+            <div class="p-6">
+                <h3 class="text-xl font-bold mb-1">Burger Kingdom</h3>
+                <p class="text-gray-400 text-sm mb-4">Fast Food • American • $15 for two</p>
+                <div class="flex justify-between items-center pt-4 border-t border-white/10">
+                    <span class="flex items-center gap-1 text-sm text-gray-300"><i data-lucide="clock" size="16"></i> 15-20 min</span>
+                    <a href="menu.html" class="bg-orange-500 hover:bg-orange-600 px-4 py-2 rounded-xl text-sm font-bold transition-colors">View Menu</a>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script>lucide.createIcons();</script>
+</body>
+</html>
